@@ -7,16 +7,16 @@ export default function App() {
       <StatusBar />
       <Text style={styles.title}>Create personal Timer</Text>
       <View style={styles.input}>
-        <TextInput placeholder="Name" />
+        <TextInput placeholder="Name" placeholderTextColor="#898A8D" />
       </View>
       <View style={styles.input}>
-        <TextInput placeholder="Date" />
+        <TextInput placeholder="Date" placeholderTextColor="#898A8D" />
       </View>
       <View style={styles.input}>
-        <TextInput placeholder="Note" />
+        <TextInput placeholder="Note" placeholderTextColor="#898A8D" />
       </View>
       <View style={styles.input}>
-        <TextInput placeholder="Tags" />
+        <TextInput placeholder="Tags" placeholderTextColor="#898A8D" />
       </View>
       <View>
         <Button title="Start Timer" />
@@ -28,22 +28,30 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     display: "flex",
+    justifyContent: 'flex-start',
     flexDirection: "column",
-    justifyContent: "center",
-    paddingTop: 50,
+    paddingTop: 60,
     backgroundColor: "#DCE8F8",
+    flex: 1,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   title: {
     color: "#202022",
-    borderWidth: 1,
     textAlign: "center",
     fontSize: 16,
     marginBottom: 24,
   },
   input: {
-    color: "#F1F7FF",
+    color: "#202022",
     height: 48,
     marginBottom: 12,
     backgroundColor: "#fff",
+    borderRadius: 5,
+    fontSize: 12,
+    textAlign: "center",
+    justifyContent: "center",
+    paddingLeft: 12,
+    paddingRight: 12,
   },
 });
