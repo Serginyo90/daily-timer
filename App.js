@@ -7,6 +7,7 @@ export default function App() {
   const [date, setDate] = useState("");
   const [note, setNote] = useState("");
   const [tag, setTag] = useState("");
+  const [timers, setTimers] = useState([]);
   function handleChangeName(text) {
     setName(text);
   }
@@ -21,6 +22,7 @@ export default function App() {
   }
   function handleSubmit() {
     console.log("__send__", { date, name, note, tag });
+    setTimers((timers) => [...timers, { date, name, note, tag }]);
   }
   return (
     <View style={styles.container}>
@@ -57,6 +59,13 @@ export default function App() {
       <View>
         <Button title="Start Timer" onPress={handleSubmit} />
       </View>
+      {timers.map((timer) => {
+        return (
+          <Text key={timer.name}>
+            {timer.name}-{timer.note}
+          </Text>
+        );
+      })}
     </View>
   );
 }
