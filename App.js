@@ -1,25 +1,61 @@
+import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 
 export default function App() {
+  const [name, setName] = useState("");
+  const [date, setDate] = useState("");
+  const [note, setNote] = useState("");
+  const [tag, setTag] = useState("");
+  function handleChangeName(text) {
+    setName(text);
+  }
+  function handleChangeDate(text) {
+    setDate(text);
+  }
+  function handleChangeNote(text) {
+    setNote(text);
+  }
+  function handleChangeTag(text) {
+    setTag(text);
+  }
+  function handleSubmit() {
+    console.log("__send__", { date, name, note, tag });
+  }
   return (
     <View style={styles.container}>
       <StatusBar />
       <Text style={styles.title}>Create personal Timer</Text>
       <View style={styles.input}>
-        <TextInput placeholder="Name" placeholderTextColor="#898A8D" />
+        <TextInput
+          placeholder="Name"
+          placeholderTextColor="#898A8D"
+          onChangeText={handleChangeName}
+        />
       </View>
       <View style={styles.input}>
-        <TextInput placeholder="Date" placeholderTextColor="#898A8D" />
+        <TextInput
+          placeholder="Date"
+          placeholderTextColor="#898A8D"
+          onChangeText={handleChangeDate}
+        />
       </View>
       <View style={styles.input}>
-        <TextInput placeholder="Note" placeholderTextColor="#898A8D" />
+        <TextInput
+          placeholder="Note"
+          placeholderTextColor="#898A8D"
+          onChangeText={handleChangeNote}
+        />
       </View>
       <View style={styles.input}>
-        <TextInput placeholder="Tags" placeholderTextColor="#898A8D" />
+        <TextInput
+          placeholder="Tags"
+          placeholderTextColor="#898A8D"
+          onChangeText={handleChangeTag}
+        />
       </View>
       <View>
-        <Button title="Start Timer" />
+        <Button title="Start Timer" onPress={handleSubmit} />
       </View>
     </View>
   );
@@ -28,7 +64,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-    justifyContent: 'flex-start',
+    justifyContent: "flex-start",
     flexDirection: "column",
     paddingTop: 60,
     backgroundColor: "#DCE8F8",
