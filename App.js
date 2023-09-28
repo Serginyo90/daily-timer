@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  ScrollView,
+} from "react-native";
 
 export default function App() {
   const [name, setName] = useState("");
@@ -64,16 +71,20 @@ export default function App() {
           value={tag}
         />
       </View>
-      <View>
+      <View style={styles.button}>
         <Button title="Start Timer" onPress={handleSubmit} />
       </View>
-      {timers.map((timer) => {
-        return (
-          <Text key={timer.name}>
-            {timer.name}-{timer.note}
-          </Text>
-        );
-      })}
+      <ScrollView alwaysBounceVertical={false}>
+        {timers.map((timer, i) => {
+          return (
+            <View key={i} style={styles.timerRow}>
+              <Text>
+                {timer.name}-{timer.note}
+              </Text>
+            </View>
+          );
+        })}
+      </ScrollView>
     </View>
   );
 }
@@ -106,5 +117,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingLeft: 12,
     paddingRight: 12,
+  },
+  timerRow: {
+    borderColor: "#007AFF",
+    borderWidth: 1,
+    borderRadius: 10,
+    height: 54,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    fontSize: 14,
+    fontWeight: 700,
+    marginBottom: 8,
+    paddingLeft: 8,
+  },
+  button: {
+    marginBottom: 8,
   },
 });
