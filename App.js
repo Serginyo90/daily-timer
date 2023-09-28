@@ -23,6 +23,10 @@ export default function App() {
   function handleSubmit() {
     console.log("__send__", { date, name, note, tag });
     setTimers((timers) => [...timers, { date, name, note, tag }]);
+    setName("");
+    setDate("");
+    setNote("");
+    setTag("");
   }
   return (
     <View style={styles.container}>
@@ -33,6 +37,7 @@ export default function App() {
           placeholder="Name"
           placeholderTextColor="#898A8D"
           onChangeText={handleChangeName}
+          value={name}
         />
       </View>
       <View style={styles.input}>
@@ -40,6 +45,7 @@ export default function App() {
           placeholder="Date"
           placeholderTextColor="#898A8D"
           onChangeText={handleChangeDate}
+          value={date}
         />
       </View>
       <View style={styles.input}>
@@ -47,6 +53,7 @@ export default function App() {
           placeholder="Note"
           placeholderTextColor="#898A8D"
           onChangeText={handleChangeNote}
+          value={note}
         />
       </View>
       <View style={styles.input}>
@@ -54,6 +61,7 @@ export default function App() {
           placeholder="Tags"
           placeholderTextColor="#898A8D"
           onChangeText={handleChangeTag}
+          value={tag}
         />
       </View>
       <View>
