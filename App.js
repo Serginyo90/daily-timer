@@ -7,6 +7,7 @@ import {
   Button,
   TextInput,
   ScrollView,
+  FlatList,
 } from "react-native";
 
 export default function App() {
@@ -28,8 +29,9 @@ export default function App() {
     setTag(text);
   }
   function handleSubmit() {
-    console.log("__send__", { date, name, note, tag });
-    setTimers((timers) => [...timers, { date, name, note, tag }]);
+    const key = Math.random().toString();
+    console.log("__send__", { date, name, note, tag, key });
+    setTimers((timers) => [...timers, { key, date, name, note, tag }]);
     setName("");
     setDate("");
     setNote("");
@@ -74,17 +76,19 @@ export default function App() {
       <View style={styles.button}>
         <Button title="Start Timer" onPress={handleSubmit} />
       </View>
-      <ScrollView alwaysBounceVertical={false}>
-        {timers.map((timer, i) => {
+      <FlatList
+        data={timers}
+        renderItem={({ item }) => {
           return (
-            <View key={i} style={styles.timerRow}>
+            <View style={styles.timerRow}>
               <Text>
-                {timer.name}-{timer.note}
+                {item.name}-{item.note}
               </Text>
             </View>
           );
-        })}
-      </ScrollView>
+        }}
+        alwaysBounceVertical={false}
+      />
     </View>
   );
 }
