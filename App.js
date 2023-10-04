@@ -11,6 +11,7 @@ import {
 } from "react-native";
 
 import TimerItem from "./components/TimerItem";
+import TimerInput from "./components/TimerInput";
 
 export default function App() {
   const [name, setName] = useState("");
@@ -43,14 +44,7 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar />
       <Text style={styles.title}>Create personal Timer</Text>
-      <View style={styles.input}>
-        <TextInput
-          placeholder="Name"
-          placeholderTextColor="#898A8D"
-          onChangeText={handleChangeName}
-          value={name}
-        />
-      </View>
+      <TimerInput name={name} handleChangeName={handleChangeName} />
       <View style={styles.input}>
         <TextInput
           placeholder="Date"
