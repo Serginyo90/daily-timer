@@ -10,6 +10,8 @@ import {
   FlatList,
 } from "react-native";
 
+import TimerItem from "./components/TimerItem";
+
 export default function App() {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
@@ -79,13 +81,7 @@ export default function App() {
       <FlatList
         data={timers}
         renderItem={({ item }) => {
-          return (
-            <View style={styles.timerRow}>
-              <Text>
-                {item.name}-{item.note}
-              </Text>
-            </View>
-          );
+          return <TimerItem name={item.name} note={item.note} />;
         }}
         alwaysBounceVertical={false}
       />
@@ -121,19 +117,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingLeft: 12,
     paddingRight: 12,
-  },
-  timerRow: {
-    borderColor: "#007AFF",
-    borderWidth: 1,
-    borderRadius: 10,
-    height: 54,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "flex-start",
-    fontSize: 14,
-    fontWeight: 700,
-    marginBottom: 8,
-    paddingLeft: 8,
   },
   button: {
     marginBottom: 8,
