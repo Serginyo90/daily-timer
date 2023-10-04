@@ -4,10 +4,10 @@ function TimerInput(props) {
   return (
     <View style={styles.input}>
       <TextInput
-        placeholder="Name New"
+        placeholder={props.placeholder}
         placeholderTextColor="#898A8D"
         onChangeText={props.handleChangeName}
-        value={props.name}
+        value={props.value}
       />
     </View>
   );

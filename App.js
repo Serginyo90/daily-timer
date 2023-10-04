@@ -44,31 +44,26 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar />
       <Text style={styles.title}>Create personal Timer</Text>
-      <TimerInput name={name} handleChangeName={handleChangeName} />
-      <View style={styles.input}>
-        <TextInput
-          placeholder="Date"
-          placeholderTextColor="#898A8D"
-          onChangeText={handleChangeDate}
-          value={date}
-        />
-      </View>
-      <View style={styles.input}>
-        <TextInput
-          placeholder="Note"
-          placeholderTextColor="#898A8D"
-          onChangeText={handleChangeNote}
-          value={note}
-        />
-      </View>
-      <View style={styles.input}>
-        <TextInput
-          placeholder="Tags"
-          placeholderTextColor="#898A8D"
-          onChangeText={handleChangeTag}
-          value={tag}
-        />
-      </View>
+      <TimerInput
+        value={name}
+        handleChangeName={handleChangeName}
+        placeholder="Name"
+      />
+      <TimerInput
+        value={date}
+        handleChangeName={handleChangeDate}
+        placeholder="Date"
+      />
+      <TimerInput
+        value={note}
+        handleChangeName={handleChangeNote}
+        placeholder="Note"
+      />
+      <TimerInput
+        value={tag}
+        handleChangeName={handleChangeTag}
+        placeholder="Tags"
+      />
       <View style={styles.button}>
         <Button title="Start Timer" onPress={handleSubmit} />
       </View>
@@ -99,18 +94,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 16,
     marginBottom: 24,
-  },
-  input: {
-    color: "#202022",
-    height: 48,
-    marginBottom: 12,
-    backgroundColor: "#fff",
-    borderRadius: 5,
-    fontSize: 12,
-    textAlign: "center",
-    justifyContent: "center",
-    paddingLeft: 12,
-    paddingRight: 12,
   },
   button: {
     marginBottom: 8,
