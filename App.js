@@ -31,10 +31,17 @@ export default function App() {
   function handleChangeTag(text) {
     setTag(text);
   }
+  function handleDelete(id) {
+    setTimers(
+      timers.filter((timer) => {
+        return timer.id !== id;
+      })
+    );
+  }
   function handleSubmit() {
     const key = Math.random().toString();
     console.log("__send__", { date, name, note, tag, key });
-    setTimers((timers) => [...timers, { key, date, name, note, tag }]);
+    setTimers((timers) => [...timers, { id: key, key, date, name, note, tag }]);
     setName("");
     setDate("");
     setNote("");
@@ -70,7 +77,14 @@ export default function App() {
       <FlatList
         data={timers}
         renderItem={({ item }) => {
-          return <TimerItem name={item.name} note={item.note} />;
+          return (
+            <TimerItem
+              id={item.id}
+              name={item.name}
+              note={item.note}
+              handleDelete={handleDelete}
+            />
+          );
         }}
         alwaysBounceVertical={false}
       />

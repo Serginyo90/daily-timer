@@ -1,12 +1,14 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Pressable } from "react-native";
 
 function TimerItem(props) {
   return (
-    <View style={styles.wrapper}>
-      <Text>
-        {props.name}-{props.note}
-      </Text>
-    </View>
+    <Pressable onPress={props.handleDelete.bind(this, props.id)}>
+      <View style={styles.wrapper}>
+        <Text>
+          {props.name}-{props.note}
+        </Text>
+      </View>
+    </Pressable>
   );
 }
 
